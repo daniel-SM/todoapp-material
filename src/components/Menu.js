@@ -1,28 +1,15 @@
 import React from 'react';
-import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
-    '@global': {
-      body: {
-        backgroundColor: theme.palette.common.gray,
-        marginBottom: 50,
-      },
-      ul: {
-        margin: 0,
-        padding: 0,
-      },
-      li: {
-        listStyle: 'none',
-      },
-    },
     appBar: {
       borderBottom: `4px solid ${theme.palette.divider}`,
-      backgroundColor : "#333",
+      backgroundColor : "#231271",
       color:"#ffff",
     },
     toolbar: {
@@ -32,19 +19,12 @@ const useStyles = makeStyles(theme => ({
       flexGrow: 1,
       fontSize : 20,
       fontWeight: 'bold',
-      marginLeft: 35,
     },
     link: {
       margin: theme.spacing(1,1.5),
-          color:"#ffff",
-  
-    }, image: {
-      marginTop: 4,
-      flexWrap4: 'wrap',
-      width : 50,
-      height: 50,
-      borderRadius : 50,
-    }
+      color:"#ffff",
+      
+    },
 }));
 
 export default () => {
