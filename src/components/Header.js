@@ -2,6 +2,6 @@ import React from 'react';
 
 export default (props) => (
     <div>
-        <h2>{props.nome} <small>{props.small}</small></h2>
+        <h1>{props.nome} <small>{props.small}</small></h1>
     </div>
 )

@@ -33,7 +33,7 @@ export default () => {
     return (
         <div>
             <CssBaseline />
-            <AppBar color="default" elevation={0} className={classes.appBar}>
+            <AppBar position='static' elevation={0} className={classes.appBar}>
                 <Toolbar className={classes.toolbar}>
                     <Typography noWrap className={classes.toolbarTitle}>
                         TodoApp        

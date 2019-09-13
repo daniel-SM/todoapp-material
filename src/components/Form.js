@@ -7,8 +7,8 @@ import Icon from './Icon';
 
 const useStyles = makeStyles(theme => ({
     textfield: {
-      marginLeft: theme.spacing(2),
-      marginRight: theme.spacing(2),
+        marginLeft: theme.spacing(2),
+        marginRight: theme.spacing(2),
     },
     list: {
         //
@@ -20,9 +20,8 @@ export default (props) => {
 
     return (
         <div>
-            <h1>Form</h1>
             <Grid container spacing={2}>
-                <Grid item xs={9}>
+                <Grid item xs={10}>
                     <TextField id="input-todo"
                         label="Adicione uma tarefa"
                         fullWidth
@@ -30,14 +29,14 @@ export default (props) => {
                         margin="normal"
                     />
                 </Grid>
-                <Grid item xs={1}>
-                    <Icon icon='add'/>
+                <Grid item className={classes.icon}>
+                    <Icon icon='add' />
                 </Grid>
-                <Grid item xs={1}>
-                    <Icon icon='search'/>
+                <Grid item className={classes.icon}>
+                    <Icon icon='search' />
                 </Grid>
-                <Grid item xs={1}>
-                    <Icon icon='clear'/>
+                <Grid item className={classes.icon}>
+                    <Icon icon='clear' />
                 </Grid>
             </Grid>
         </div>

@@ -7,14 +7,18 @@ import Clear from '@material-ui/icons/Clear';
 
 const useStyles = makeStyles(theme => ({
     icon: {
-        width: 25,
-        height: 25,
-        padding: 2
+        width: 30,
+        height: 30,
+        padding: 2,
+        color: '#fff',
     },
     button: {
-        background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+        minWidth: 40,
+        width: 40,
+        height: 40,
+        background: '#231271',
         border: 0,
-        borderRadius: 0,
+        borderRadius: 50,
         padding: '0 0',
     },
 }));
@@ -35,7 +39,7 @@ export default (props) => {
     }
 
     return (
-        <Button size='small' className={classes.button}>
+        <Button variant="contained" className={classes.button}>
             {setIcon(props.icon)}
         </Button>
     )
