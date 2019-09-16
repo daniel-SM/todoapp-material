@@ -1,9 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Add from '@material-ui/icons/Add';
 import Search from '@material-ui/icons/Search';
 import Clear from '@material-ui/icons/Clear';
+import Delete from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles(theme => ({
     icon: {
@@ -11,15 +11,6 @@ const useStyles = makeStyles(theme => ({
         height: 30,
         padding: 2,
         color: '#fff',
-    },
-    button: {
-        minWidth: 40,
-        width: 40,
-        height: 40,
-        background: '#231271',
-        border: 0,
-        borderRadius: 50,
-        padding: '0 0',
     },
 }));
 
@@ -33,14 +24,16 @@ export default (props) => {
             return <Search className={classes.icon}/>
         } else if (icon === 'clear') {
             return <Clear className={classes.icon}/>
+        } else if (icon === 'delete') {
+            return <Delete className={classes.icon}/>
         } else {
             return null
         }
     }
 
     return (
-        <Button variant="contained" className={classes.button}>
+        <div>
             {setIcon(props.icon)}
-        </Button>
+        </div>
     )
 }
