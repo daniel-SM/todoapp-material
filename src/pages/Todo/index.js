@@ -26,17 +26,19 @@ export default class Todo extends Component {
     componentDidMount() {
         this.refresh();
     }
-    
-    refresh = async () => {
-        const response = await api.get('/todos?sort=-createAt');
 
+    refresh = async (description = '') => {
+        const search = description ? `&description__regex=/${description}/` : ''
+        const response = await api.get(`/todos?sort=-createdAt${search}`);
         this.setState({
             ...this.state,
-            description: '',
+            description,
             list: response.data,
         });
+    }
 
-        console.log(response.data);
+    handleSearch = () => {
+        this.refresh(this.state.description);
     }
 
     handleChange = (event) => {
@@ -47,33 +49,46 @@ export default class Todo extends Component {
     }
 
     handleAdd = async () => {
-        const response = await api.post('/todos', { description: this.state.description })
-
+        await api.post('/todos', { description: this.state.description });
         this.refresh();
-
-        console.log(response.data);
     }
 
     handleRemove = (todo) => {
         api.delete(`/todos/${todo._id}`);
-
-        this.refresh()
+        this.refresh(this.state.description);
     }
 
+    handleMarkAsDone = async(todo) => {
+        await api.put(`/todos/${todo._id}`,{ ...todo, done: true });
+        this.refresh(this.state.description);
+    }
 
+    handleMarkAsPending = async(todo) => {
+        await api.put(`/todos/${todo._id}`,{ ...todo, done: false });
+        this.refresh(this.state.description);
+    }
 
+    handleClear = () => {
+        this.refresh();
+    }
 
     render() {
         return (
             <div>
                 <MyPaper elevation={5}>
                     <Header nome="Cadastro" small="> Tarefas" />
-                    <Form description={this.state.description}
+                    <Form 
+                        description={this.state.description}
                         handleChange={this.handleChange}
                         handleAdd={this.handleAdd}
+                        handleSearch={this.handleSearch}
+                        handleClear={this.handleClear}
                     />
                     <MyDivider />
-                    <List tarefas={this.state.list}
+                    <List 
+                        tarefas={this.state.list}
+                        handleMarkAsDone={this.handleMarkAsDone}
+                        handleMarkAsPending={this.handleMarkAsPending}
                         handleRemove={this.handleRemove}
                     />
                 </MyPaper>

@@ -10,14 +10,35 @@ import Button from '@material-ui/core/Button';
 import Icon from './Icon';
 
 const useStyles = makeStyles(theme => ({
-    button: {
+    done: {
         minWidth: 35,
         height: 35,
-        background: '#231271',
+        background: '#008000',
         border: 0,
-        borderRadius: 50,
+        borderRadius: 10,
         padding: '0 0',
         alignItems: 'bottom',
+        margin: 2,
+    },
+    undo: {
+        minWidth: 35,
+        height: 35,
+        background: '#FFCC00',
+        border: 0,
+        borderRadius: 10,
+        padding: '0 0',
+        alignItems: 'bottom',
+        margin: 2,
+    },
+    delete: {
+        minWidth: 35,
+        height: 35,
+        background: '#BB1000',
+        border: 0,
+        borderRadius: 10,
+        padding: '0 0',
+        alignItems: 'bottom',
+        margin: 2,
     },
 }));
 
@@ -39,13 +60,30 @@ export default (props) => {
                 <TableBody>
                     {tarefas.map(todo => (
                         <TableRow key={todo._id}>
-                            <TableCell component="th" scope="row">
+                            <TableCell component="th" scope="row" style={{ textDecorationLine: (todo.done ? 'line-through' : '') }}>
                                 {todo.description}
                             </TableCell>
                             <TableCell align="right">
-                                <Button variant="contained" className={classes.button}
-                                    onClick={() => props.handleRemove(todo)}
+                                <Button 
+                                    variant="contained" 
+                                    className={classes.done}
+                                    disabled={todo.done}
+                                    onClick={() => props.handleMarkAsDone(todo)}
                                 > 
+                                    <Icon icon='done'/>
+                                </Button>
+                                <Button 
+                                    variant="contained" 
+                                    className={classes.undo}
+                                    disabled={!todo.done}
+                                    onClick={() => props.handleMarkAsPending(todo)}> 
+                                    <Icon icon='undo'/>
+                                </Button>
+                                <Button 
+                                    variant="contained" 
+                                    className={classes.delete}
+                                    disabled={!todo.done}
+                                    onClick={() => props.handleRemove(todo)}> 
                                     <Icon icon='delete'/>
                                 </Button>
                             </TableCell>

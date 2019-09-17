@@ -4,6 +4,8 @@ import Add from '@material-ui/icons/Add';
 import Search from '@material-ui/icons/Search';
 import Clear from '@material-ui/icons/Clear';
 import Delete from '@material-ui/icons/Delete';
+import Done from '@material-ui/icons/Done';
+import Replay from '@material-ui/icons/Replay';
 
 const useStyles = makeStyles(theme => ({
     icon: {
@@ -26,6 +28,10 @@ export default (props) => {
             return <Clear className={classes.icon}/>
         } else if (icon === 'delete') {
             return <Delete className={classes.icon}/>
+        } else if (icon === 'done') {
+            return <Done className={classes.icon}/>
+        } else if (icon === 'undo') {
+            return <Replay className={classes.icon}/>
         } else {
             return null
         }
